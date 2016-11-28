@@ -1,0 +1,42 @@
+wget -r -np -nH --cut-dirs=3 -R index.html http://hostname/aaa/bbb/ccc/ddd/
+
+It will download all files and subfolders in ddd directory:
+recursively (-r),
+
+not going to upper directories, like ccc/… (-np),
+
+not saving files to hostname folder (-nH),
+
+but to ddd by omitting first 3 folders aaa, bbb, ccc (--cut-dirs=3)
+
+excluding index.html files (-R index.html)
+
+http://stackoverflow.com/questions/23446635/how-to-download-http-directory-with-all-files-and-sub-directories-as-they-appear
+
+  http://www.concordia.ca/artsci/biology.html
+  Total wall clock time: 44m 4s
+  Downloaded: 4099 files, 231M in 2m 7s (1.81 MB/s)
+
+  http://www.concordia.ca/artsci/chemistry.html
+  Total wall clock time: 38m 11s
+  Downloaded: 3520 files, 200M in 2m 14s (1.49 MB/s)
+
+  http://www.concordia.ca/artsci/exercise-science.html
+  Total wall clock time: 15m 44s
+  Downloaded: 1478 files, 81M in 1m 0s (1.34 MB/s)
+
+  http://www.concordia.ca/artsci/geography-planning-environment.html
+  Total wall clock time: 1h 25m 27s
+  Downloaded: 7830 files, 449M in 4m 26s (1.69 MB/s)
+
+  http://www.concordia.ca/artsci/math-stats.html
+  Total wall clock time: 55m 28s
+  Downloaded: 5594 files, 326M in 2m 50s (1.91 MB/s)
+
+  http://www.concordia.ca/artsci/physics.html
+  Total wall clock time: 1h 15m 54s
+  Downloaded: 6364 files, 374M in 4m 11s (1.49 MB/s)
+
+  http://www.concordia.ca/artsci/psychology.html
+  Total wall clock time: 49m 28s
+  Downloaded: 4669 files, 265M in 3m 18s (1.34 MB/s)
