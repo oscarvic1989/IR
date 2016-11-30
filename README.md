@@ -3,12 +3,11 @@
 
 ## Lab machines installation
 
-Install virtualenv: ```easy_install --user virtualenv```.
-Create a virtual environment: ```~/.local/bin/virtualenv ir_venv```.
-Activate the virtual environment: ```source ir_venv/bin/activate``` (if you are in csh use activate.csh instead)
-
-Go to the directory where you cloned the poject: ```cd <your-project-dir>```.
-Install the required python libraries to the virtual environment: ```pip install -r requirements.txt```.
+- Install virtualenv: ```easy_install --user virtualenv```.
+- Create a virtual environment: ```~/.local/bin/virtualenv ir_venv```.
+- Activate the virtual environment (if you are in csh use activate.csh instead): ```source ir_venv/bin/activate```.
+- Go to the directory where you cloned the poject: ```cd <your-project-dir>```.
+- Install the required python libraries to the virtual environment: ```pip install -r requirements.txt```.
 
 ## Running the analysis
 
