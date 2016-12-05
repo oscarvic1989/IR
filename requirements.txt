@@ -2,3 +2,4 @@ afinn==0.1
 beautifulsoup4==4.5.1
 bs4==0.0.1
 tabulate==0.7.5
+nltk==3.2.1

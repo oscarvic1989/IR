@@ -24,7 +24,7 @@ def main():
     for dep_url, dep_dir in departments:
         make_dirs(dep_dir)
         print(dep_dir)
-        os.system('cd {} && wget -r -np -nH --cut-dirs=3 -R index.html {}'.format(dep_dir, dep_url))
+        os.system('cd {} && wget -r -np -nH --follow-tags=a --cut-dirs=3 -R index.html {}'.format(dep_dir, dep_url))
 
 
 if __name__ == '__main__':

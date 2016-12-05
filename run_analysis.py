@@ -63,18 +63,18 @@ def department_analysis(department_dir):
     logging.info("Getting all html files for department dir {}".format(department_dir))
     html_files = methods.visit_subdir(department_dir)
 
-    total_custom_score = 0
     total_script_score = 0
 
     for f_path in html_files:
         with open(f_path) as f:
             f_content = f.read()
             logging.info("Parsing HTML & computing score for file {}".format(f_path))
-        text = methods.parse_html(f_content)
-        total_script_score += methods.run_afinn(text)
+        text = methods.parse_html(f_content).lower()
+        total_script_score += methods.sentiment_score(text)
 
-    logging.info(total_custom_score)
-    logging.info(total_script_score)
+    total_script_score /= len(html_files)
+
+    logging.info("Total score for department: {}".format(total_script_score))
 
     return total_script_score
 
@@ -83,7 +83,11 @@ def _setup_log():
     """
     Setup the log.
     """
-    logging.basicConfig(filename='analysis.log',
+    log_file = 'analysis.log'
+    if os.path.exists(log_file):
+        os.remove(log_file)
+
+    logging.basicConfig(filename=log_file,
                         level=logging.INFO,
                         format='%(asctime)s %(message)s',
                         datefmt='%m-%d %H:%M')
