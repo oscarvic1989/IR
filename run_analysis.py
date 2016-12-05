@@ -62,6 +62,7 @@ def department_analysis(department_dir):
     """
     logging.info("Getting all html files for department dir {}".format(department_dir))
     html_files = methods.visit_subdir(department_dir)
+    logging.info("There are {} documents in department dir {}".format(len(html_files), department_dir))
 
     total_script_score = 0
 
@@ -70,7 +71,9 @@ def department_analysis(department_dir):
             f_content = f.read()
             logging.info("Parsing HTML & computing score for file {}".format(f_path))
         text = methods.parse_html(f_content).lower()
-        total_script_score += methods.sentiment_score(text)
+        doc_score = methods.sentiment_score(text)
+        logging.info("Score {} for document {}".format(doc_score, f_path))
+        total_script_score += doc_score
 
     total_script_score /= len(html_files)
 
