@@ -29,8 +29,9 @@ print("LengthJsonObject load finish")
 DYdictionary=defaultdict(list)
 
 def calculateTf_Idf(term, doc):
+    print(len(indexJsonObject[term]))
     term1 = frequenceJsonObject[doc][term] / LengthJsonObject[doc] +1
-    term2 = math.log10(1425/len(indexJsonObject[term]))+1
+    term2 = math.log10(1429/len(indexJsonObject[term]))+1
     total = term1 * term2
     if term2 <0 :
         print("term1 is "+str(term1)) 

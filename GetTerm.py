@@ -30,12 +30,14 @@ def GetTermFreq(root_dir_name='Departments'):
     math_stats_dir = os.path.join(root_dir, 'math-stats')
     physics_dir = os.path.join(root_dir, 'physics')
     psychology_dir = os.path.join(root_dir, 'psychology')
-
+    mystery_dir = os.path.join(root_dir, 'mystery')
+    
     all_departments = [('Biology', biology_dir), ('Chemistry', chemistry_dir),
                             ('Exercise Science', exercise_science_dir),
                             ('Geography Planning Environment', geography_planning_environment_dir),
-                            ('Math Stats', math_stats_dir), ('Physics', physics_dir), ('Psychology', psychology_dir)]
-
+                            ('Math Stats', math_stats_dir), ('Physics', physics_dir), 
+                            ('Psychology', psychology_dir),("Mystery",mystery_dir)]
+    
     [(dep_name, department_analysis(dep_dir, dep_name)) for dep_name, dep_dir in all_departments]
     sorted_x = collections.OrderedDict(sorted(DYdictionary.items()))        
     filestreamoutput=open("Frequence.txt", "w")
@@ -44,12 +46,8 @@ def GetTermFreq(root_dir_name='Departments'):
     filestreamoutput.close()
     DYdictionary.clear()
     
-    sorted_x = collections.OrderedDict(sorted(Lendictionary.items()))        
-    filestreamoutput=open("Length.txt", "w")
-    finaltext=unicode(json.dumps(sorted_x, ensure_ascii=False)).encode('utf-8')
-    filestreamoutput.write(finaltext)
-    filestreamoutput.close()
-    DYdictionary.clear()
+    sorted_x.clear()
+
     
     print(' finish')
     
@@ -68,11 +66,7 @@ def department_analysis(department_dir,dep_name):
             logging.info("Parsing HTML & computing score for file {}".format(f_path))
         text = methods.parse_html(f_content)
         test_caseFolding=text.lower();
-        """
-        total_script_score += methods.run_afinn(text)
-        
-        tokens=word_tokenize(test_caseFolding)
-        """
+
         path = f_path.replace("/Users/oscar/Desktop/project/COMP_479_FINAL_PROJECT/index/", "")
         tokens=word_tokenize(test_caseFolding)
         if len(tokens)==0:
@@ -81,14 +75,7 @@ def department_analysis(department_dir,dep_name):
             counts = Counter(tokens)
             DYdictionary[path]=counts
             Lendictionary[path] = len(tokens);
-    '''    
-    sorted_x = collections.OrderedDict(sorted(DYdictionary.items()))        
-    filestreamoutput=open(dep_name+".txt", "w")
-    finaltext=unicode(json.dumps(sorted_x, ensure_ascii=False)).encode('utf-8')
-    filestreamoutput.write(finaltext)
-    filestreamoutput.close()
-    DYdictionary.clear()
-    print(dep_name+' finish')
-    '''
+    print(dep_name+' finishes.')
+    
 if __name__ == '__main__':
     GetTermFreq()
