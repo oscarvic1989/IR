@@ -67,6 +67,9 @@ def department_analysis(department_dir):
     total_script_score = 0
 
     for f_path in html_files:
+        if not f_path.endswith('.html'):
+            print("Ignoring non-html file {}".format(f_path))
+            continue
         with open(f_path) as f:
             f_content = f.read()
             logging.info("Parsing HTML & computing score for file {}".format(f_path))
@@ -80,6 +83,11 @@ def department_analysis(department_dir):
     logging.info("Total score for department: {}".format(total_script_score))
 
     return total_script_score
+
+
+def analyze_mystery(dir_name='MYSTERY_PAGE'):
+    result = department_analysis(dir_name)
+    print("MYSTERY_PAGE score: {}".format(result))
 
 
 def _setup_log():
@@ -100,4 +108,10 @@ def _setup_log():
 
 
 if __name__ == '__main__':
-    full_analysis()
+    if sys.argv[1] == 'mystery':
+        print("Analyzing mystery page")
+        analyze_mystery()
+    else:
+        print("Analyzing all departments")
+        full_analysis()
+
